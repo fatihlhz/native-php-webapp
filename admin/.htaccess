@@ -1,7 +1,9 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteBase /native-php-webapp/admin/
+    RewriteBase /native-php-webapp/admin/public/
+
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^ index.php [L]
+    
+    RewriteRule ^(.*)$ /native-php-webapp/admin/index.php [L]
 </IfModule>
