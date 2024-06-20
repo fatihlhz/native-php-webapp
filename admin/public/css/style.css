@@ -1,0 +1,14 @@
+.full-height {
+    height: 100vh;
+}
+
+.form-login {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: 17vh auto auto auto;
+}
+
+.second {
+    background-color: rgb(224, 224, 224);
+}

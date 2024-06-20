@@ -12,6 +12,10 @@ class HomeController extends Controller {
     public static function login() {
         global $base_url;
 
+        if (isset($_SESSION['user'])) {
+            header("Location: $base_url/dashboard");
+        }
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $email = $_POST['email'];
             $password = $_POST['password'];
