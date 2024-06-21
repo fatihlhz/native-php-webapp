@@ -87,7 +87,7 @@
                             <div class="card-body d-flex">
                                 <img src="<?php echo htmlspecialchars($base_url . '/public/img/icon/clipboard.svg') ?>" alt="" width="64" height="64" class="me-2">
                                 <div style="padding: 3px">
-                                    <b>Jumlah Peminjam : <?php echo $data['borrowed']?></b>
+                                    <b>Buku dipinjam : <?php echo $data['borrowed']?></b>
                                 </div>
                             </div>
                         </div>
