@@ -63,7 +63,7 @@
                             <div class="card-body d-flex">
                                 <img src="<?php echo htmlspecialchars($base_url . '/public/img/icon/books.svg') ?>" alt="" width="64" height="64" class="me-2">
                                 <div style="padding: 3px">
-                                    <b>Data Buku : 4</b>
+                                    <b>Jumlah Buku : <?php echo $data['book']?></b>
                                 </div>
                             </div>
                         </div>
@@ -71,7 +71,7 @@
                             <div class="card-body d-flex">
                                 <img src="<?php echo htmlspecialchars($base_url . '/public/img/icon/category.svg') ?>" alt="" width="64" height="64" class="me-2">
                                 <div style="padding: 3px">
-                                    <b>Data Kategori : 4</b>
+                                    <b>Jumlah Kategori : <?php echo $data['category']?></b>
                                 </div>
                             </div>
                         </div>
@@ -79,7 +79,15 @@
                             <div class="card-body d-flex">
                                 <img src="<?php echo htmlspecialchars($base_url . '/public/img/icon/user.svg') ?>" alt="" width="64" height="64" class="me-2">
                                 <div style="padding: 3px">
-                                    <b>Data User : 4</b>
+                                    <b>Jumlah User : <?php echo $data['user']?></b>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card mx-3">
+                            <div class="card-body d-flex">
+                                <img src="<?php echo htmlspecialchars($base_url . '/public/img/icon/clipboard.svg') ?>" alt="" width="64" height="64" class="me-2">
+                                <div style="padding: 3px">
+                                    <b>Jumlah Peminjam : <?php echo $data['borrowed']?></b>
                                 </div>
                             </div>
                         </div>
