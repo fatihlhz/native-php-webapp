@@ -9,7 +9,7 @@
 <body>
     <main class="form-login text-center">
         <form method="POST" action="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>">
-            <img class="mb-4" src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+            <img class="mb-4" src="<?php echo htmlspecialchars($base_url . '/public/img/icon/admin.svg') ?>" alt="" width="72" height="57">
             <h1 class="h3 mb-3 fw-normal">Please log in</h1>
 
             <div class="form-floating my-3">

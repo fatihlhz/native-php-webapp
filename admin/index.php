@@ -14,11 +14,10 @@ $request_path = ltrim($request_path, '/');
 require  'config/config.php';
 require  'core/Router.php';
 require  'core/Controller.php';
-require  'models/UserModel.php';
 
 require  'controllers/HomeController.php';
 require  'controllers/DashboardController.php';
-// require  'controllers/LoginController.php';
+require  'controllers/BukuController.php';
 
 // $router = new Router();
 // $router->dispatch($request_path);
@@ -35,6 +34,12 @@ switch ($request_path) {
         break;
     case 'dashboard' :
         DashboardController::index();
+        break;
+    case 'buku' :
+        BukuController::index();
+        break;
+    case 'buku/tambah' :
+        BukuController::tambah();
         break;
     default:
         http_response_code(404);

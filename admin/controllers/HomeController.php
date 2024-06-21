@@ -1,8 +1,11 @@
 <?php
+require  'models/UserModel.php';
+
 class HomeController extends Controller {    
     public static function index() {
         global $base_url;
 
+        session_start();
         if($_SESSION['user'] == null) {
             header("Location: $base_url/login");
         }
@@ -12,6 +15,7 @@ class HomeController extends Controller {
     public static function login() {
         global $base_url;
 
+        session_start();
         if (isset($_SESSION['user'])) {
             header("Location: $base_url/dashboard");
         }
