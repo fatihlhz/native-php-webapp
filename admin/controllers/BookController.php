@@ -2,7 +2,7 @@
 require  'models/BookModel.php';
 require  'models/CategoryModel.php';
 
-class BukuController extends Controller {
+class BookController extends Controller {
     public static function index() {
         global $base_url;
 
