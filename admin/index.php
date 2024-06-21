@@ -39,7 +39,13 @@ switch ($request_path) {
         BukuController::index();
         break;
     case 'buku/tambah' :
-        BukuController::tambah();
+        BukuController::create();
+        break;
+    case 'buku/edit' :
+        BukuController::update();
+        break;
+    case 'buku/delete' :
+        BukuController::delete();
         break;
     default:
         http_response_code(404);

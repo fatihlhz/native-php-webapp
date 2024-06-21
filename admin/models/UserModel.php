@@ -8,7 +8,7 @@ class UserModel {
     }
 
     public function getUserByEmail($email) {
-        $stmt = $this->pdo->prepare('SELECT * FROM users WHERE email = :email');
+        $stmt = $this->pdo->prepare('SELECT * FROM user WHERE email = :email');
         $stmt->execute(['email' => $email]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }

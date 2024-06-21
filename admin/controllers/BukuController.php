@@ -22,17 +22,43 @@ class BukuController extends Controller {
         require 'views/buku.php';
     }
 
-    public static function tambah() {
+    public static function create() {
         global $base_url;
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $title = $_POST['title'];
             $id_category = $_POST['category'];
 
-            // echo $title;
-            // echo " $id_category"
             $bookModel = new BookModel();
             $bookModel->create($title, $id_category);
+        }
+
+        header("Location: $base_url/buku");
+    }
+
+    public static function update() {
+        global $base_url;
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $id = $_POST['id'];
+            $title = $_POST['title'];
+            $id_category = $_POST['category'];
+
+            $bookModel = new BookModel();
+            $bookModel->update($id, $title, $id_category);
+        }
+
+        header("Location: $base_url/buku");
+    }
+
+    public static function delete() {
+        global $base_url;
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $id = $_POST['id'];
+
+            $bookModel = new BookModel();
+            $bookModel->delete($id);
         }
 
         header("Location: $base_url/buku");

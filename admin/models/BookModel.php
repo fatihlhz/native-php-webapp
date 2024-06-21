@@ -31,8 +31,18 @@ class BookModel {
     }
 
     public function create($title, $id_category) {
-        $stmt = $this->pdo->prepare("INSERT INTO book (title, id_category) VALUES (:title, :id_category)");
+        $stmt = $this->pdo->prepare('INSERT INTO book (title, id_category) VALUES (:title, :id_category)');
         return $stmt->execute(['title' => $title, 'id_category' => $id_category]);
+    }
+
+    public function update($id, $title, $id_category) {
+        $stmt = $this->pdo->prepare('UPDATE book SET title = :title, id_category = :id_category WHERE id = :id');
+        return $stmt->execute(['id' => $id, 'title' => $title, 'id_category' => $id_category]);
+    }
+
+    public function delete($id) {
+        $stmt = $this->pdo->prepare("DELETE FROM book WHERE id = :id");
+        return $stmt->execute(['id' => $id]);
     }
 }
 ?>

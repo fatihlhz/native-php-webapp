@@ -69,6 +69,7 @@
                                         <th>Kategori</th>
                                         <th>Status</th>
                                         <th>Peminjam</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -80,6 +81,10 @@
                                                 <td>$book[category]</td>
                                                 <td>$book[status]</td>
                                                 <td>$book[user]</td>
+                                                <td>
+                                                    <button type='button' id='edit' class='btn btn-warning' data-bs-toggle='modal' data-bs-target='#editModal' data-id='$book[id]' data-title='$book[title]' data-category='$book[category]'>Edit</button>
+                                                    <button type='button' id='delete' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#deleteModal' data-id='$book[id]' data-title='$book[title]'>Delete</button>
+                                                </td>
                                             </tr>";
                                     }
                                    ?>
@@ -122,6 +127,58 @@
                 </div>
             </form>
         </div>
+
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
+            <form class="modal-dialog" action="buku/edit" method="POST">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="createModalLabel">Edit Data</h5>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" class="form-control" id="idEdit" name="id">
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Judul Buku</label>
+                            <input type="text" class="form-control" id="titleEdit" name="title" placeholder="Masukkan judul">
+                        </div>
+                        <div class="mb-3">
+                            <label for="category" class="form-label">Kategori</label>
+                            <select class="form-control" id="categoryEdit" name="category" aria-label="Select Category">
+                                <option>Pilih kategori</option>
+                                <?php 
+                                    foreach($categories as $category) {
+                                        echo "<option value='$category[id]'>$category[name]</option>";
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-warning">Update changes</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
+            <form class="modal-dialog" action="buku/delete" method="POST">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="createModalLabel">Delete Data</h5>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" class="form-control" id="idDelete" name="id">
+                        Apakah anda yakin akan menghapus 
+                        <span id="titleDelete"></span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
     </main>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
