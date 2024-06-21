@@ -17,7 +17,9 @@ require  'core/Controller.php';
 
 require  'controllers/HomeController.php';
 require  'controllers/DashboardController.php';
-require  'controllers/BukuController.php';
+require  'controllers/BookController.php';
+require  'controllers/CategoryController.php';
+require  'controllers/UserController.php';
 
 // $router = new Router();
 // $router->dispatch($request_path);
@@ -36,16 +38,40 @@ switch ($request_path) {
         DashboardController::index();
         break;
     case 'buku' :
-        BukuController::index();
+        BookController::index();
         break;
     case 'buku/tambah' :
-        BukuController::create();
+        BookController::create();
         break;
     case 'buku/edit' :
-        BukuController::update();
+        BookController::update();
         break;
     case 'buku/delete' :
-        BukuController::delete();
+        BookController::delete();
+        break;
+    case 'kategori' :
+        CategoryController::index();
+        break;
+    case 'kategori/tambah' :
+        CategoryController::create();
+        break;
+    case 'kategori/edit' :
+        CategoryController::update();
+        break;
+    case 'kategori/delete' :
+        CategoryController::delete();
+        break;
+    case 'user' :
+        UserController::index();
+        break;
+    case 'user/tambah' :
+        UserController::create();
+        break;
+    case 'user/edit' :
+        UserController::update();
+        break;
+    case 'user/delete' :
+        UserController::delete();
         break;
     default:
         http_response_code(404);
