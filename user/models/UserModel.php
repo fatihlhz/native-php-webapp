@@ -13,8 +13,8 @@ class UserModel {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function createUser($email, $password) {
-        $stmt = $this->pdo->prepare('INSERT INTO users (email, password) VALUES (:email, :password)');
+    public function create($email, $password) {
+        $stmt = $this->pdo->prepare('INSERT INTO user (email, password) VALUES (:email, :password)');
         return $stmt->execute(['email' => $email, 'password' => $password]);
     }
 }

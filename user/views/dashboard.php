@@ -38,45 +38,60 @@
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
                     <li><a class="dropdown-item" href="user">User Page</a></li>
                     <!-- <li><a class="dropdown-item" href="login">Login</a></li -->
-                    <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                    <li><a class="dropdown-item" href="logout">Logout</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
     <div class="container mt-4">
-        <h2>Dashboard</h2>
+    <h2>Dashboard</h2>
+    
+    <div class="d-flex flex-wrap my-3 justify-content-center px-3 ">
+        <?php
+        $counter = 0;
+        foreach ($books as $book):
+            if ($counter % 4 == 0): // Start a new row for every 4 cards
+        ?>
+        <div class="row w-100 mb-4">
+        <?php endif; ?>
         
-        <div class="d-flex my-3 justify-content-center px-3 ">
-            <?php
-            // Example books data (you would fetch this from your database)
-            $books = [
-                ['id' => 1, 'title' => 'Book 1', 'author' => 'Author 1', 'description' => 'Description of Book 1', 'img' => 'book.jpeg'],
-                ['id' => 2, 'title' => 'Book 2', 'author' => 'Author 2', 'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. A expedita asperiores quos magnam vel corporis in totam obcaecati, aut aspernatur, vitae facere porro non fugit earum. At distinctio mollitia perferendis.', 'img' => 'book2.jpeg'],
-                ['id' => 3, 'title' => 'Book 3', 'author' => 'Author 3', 'description' => 'Description of Book 3', 'img' => 'book.jpeg'],
-                ['id' => 3, 'title' => 'Book 3', 'author' => 'Author 3', 'description' => 'Description of Book 3', 'img' => 'book2.jpeg'],
-            ];
-            foreach ($books as $book):
-            ?>
-            <div class="col-md-3">
-                <div class="card my-2 h-100" style="width: 18rem;">
-                    <img src="<?php echo htmlspecialchars($base_url . '/public/img/' . $book['img']) ?>" class="card-img-top" alt="Book Image" >                    
-                    <div class="card-body  d-flex flex-column justify-content-between">
-                        <div >
-                            <h5 class="card-title"><?php echo htmlspecialchars($book['title']); ?></h5>
-                            <h6 class="card-subtitle mb-2 text-muted"><?php echo htmlspecialchars($book['author']); ?></h6>
-                            <p class="card-text"><?php echo htmlspecialchars($book['description']); ?></p>
-                        </div>
-                        <div>
-                            <a href="#" style="background-color: #FF7F3E; text-decoration: none; color: black;" class="btn">Pinjam Buku</a>
-                        </div>
+        <div class="col-md-3 d-flex justify-content-center">
+            <div class="card my-2 h-100" style="width: 18rem;">
+                <img src="<?php echo htmlspecialchars($base_url . '/public/img/book.jpeg') ?>" class="card-img-top" alt="Book Image" >                    
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <div>
+                        <h5 class="card-title"><?php echo htmlspecialchars($book['title']); ?></h5>
+                        <h6 class="card-subtitle mb-2 text-muted"><?php echo htmlspecialchars($book['category']); ?></h6>
+                        <p class="card-text"><?php echo htmlspecialchars($book['book_id']); ?></p>
+                        <!-- <p class="card-text"><?php echo htmlspecialchars($_SESSION['user']); ?></p>
+                        <p class="card-text"><?php echo htmlspecialchars($_SESSION['category']); ?></p> -->
                     </div>
+                    <form action="dashboard/pinjam" method="POST">
+                        <input type="hidden" name="id_book" value="<?php echo $book['book_id']; ?>">
+                        <input type="hidden" name="id_user" value="<?php echo $_SESSION['id_user']; ?>">
 
+                        <div>
+                            <button type="submit" style="background-color: #FF7F3E; text-decoration: none; color: black;" class="btn">Pinjam Buku</button>
+                        </div>
+                    </form>
                 </div>
             </div>
-            <?php endforeach; ?>
         </div>
+
+        <?php
+            $counter++;
+            if ($counter % 4 == 0): // Close the row after 4 cards
+        ?>
+        </div>
+        <?php endif; ?>
+        <?php endforeach; ?>
+
+        <?php if ($counter % 4 != 0): // Close the last row if it has less than 4 cards ?>
+        </div>
+        <?php endif; ?>
     </div>
+</div>
     
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>

@@ -23,12 +23,11 @@ class HomeController extends Controller {
             $userModel = new UserModel();
             $user = $userModel->getUserByEmail($email);
 
-            // $hashed_password = password_hash($user["password"], PASSWORD_DEFAULT);
-            // echo "GET : $hashed_password";
 
             if ($user && password_verify($password, $user['password'])) {
                 session_start();
                 $_SESSION['user'] = $user['email'];
+                $_SESSION['id_user'] = $user['id'];
                 header("Location: $base_url/dashboard");
                 exit;
             } else {

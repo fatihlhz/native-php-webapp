@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Register</title>
     <!-- Link to Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -31,7 +31,7 @@
         <div class="container login-container ">
             <img src="/native-php-webapp/user/public/img/logo-web.png" alt="" class="geser-gambar" >
             <!-- <h2 class="text-center">Login</h2> -->
-            <form action="login" method="post">
+            <form action="register/akun" method="post">
                 <div class="form-group">
                     <label for="email" class="label">Email:</label>
                     <input type="text" class="form-control" id="email" name="email" placeholder="Enter email" required>
@@ -41,10 +41,10 @@
                     <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" required>
                 </div>
                 <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn " style="border-radius: 20px">Login</button>
+                    <button type="submit" class="btn " style="border-radius: 20px">Register</button>
                 </div>
                 <div class="text-center my-3">
-                    <p>Don't have an account? <a href="register" class="text: white">Register</a></p>
+                    <p>Already have an account? <a href="login" class="text: white">Login</a></p>
                 </div>
             </form>
         </div>

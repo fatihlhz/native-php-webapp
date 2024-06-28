@@ -21,6 +21,7 @@ require  'controllers/DashboardController.php';
 require 'controllers/CategoryController.php';
 require 'controllers/PinjamanController.php';
 require 'controllers/UserController.php';
+require 'controllers/RegisterController.php';
 
 
 switch ($request_path) {
@@ -33,8 +34,17 @@ switch ($request_path) {
     case 'logout' :
         HomeController::logout();
         break;
+    case 'register' :
+        RegisterController::index();
+        break;
+    case 'register/akun' :
+        RegisterController::create();
+        break;
     case 'dashboard' :
         DashboardController::index();
+        break;
+    case 'dashboard/pinjam' :
+        DashboardController::create();
         break;
     case 'category' :
         CategoryController::index();

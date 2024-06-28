@@ -1,4 +1,5 @@
 <?php
+require 'models/CategoryModel.php';
 class CategoryController extends Controller {
     public static function index() {
         global $base_url;
@@ -8,6 +9,10 @@ class CategoryController extends Controller {
             header("Location: $base_url/login");
             exit;
         }
+
+        $categoryModel = new CategoryModel();
+        $categories = $categoryModel->getAllAndCount();
+
         require 'views/category.php';
     }
 }

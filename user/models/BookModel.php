@@ -7,24 +7,20 @@ class BookModel {
         $this->pdo = $pdo;
     }
 
-    public function getAll() {
+    public function getAll($id_user) {
         $stmt = $this->pdo->prepare("SELECT 
-                b.id AS id, 
-                b.title AS title, 
-                c.name AS category, 
-                CASE 
-                    WHEN br.id IS NOT NULL THEN 'Dipinjam' 
-                    ELSE 'Free' 
-                END AS status, 
-                COALESCE(u.email, '-') AS user
-            FROM 
-                Book b
-            LEFT JOIN 
-                Category c ON b.id_category = c.id
-            LEFT JOIN 
-                Borrowed br ON b.id = br.id_book
-            LEFT JOIN 
-                User u ON br.id_user = u.id");
+    b.id AS book_id,
+    b.title AS title,
+    c.name AS category,
+    br.id AS id_borrow
+FROM 
+    Book b
+JOIN
+    Category c ON b.id_category = c.id
+LEFT JOIN 
+    Borrowed br ON b.id = br.id_book
+WHERE 
+    br.id_user IS NULL");
 
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -43,6 +39,11 @@ class BookModel {
     public function delete($id) {
         $stmt = $this->pdo->prepare("DELETE FROM book WHERE id = :id");
         return $stmt->execute(['id' => $id]);
+    }
+
+    public function pinjam($id_book,$id_user){
+        $stmt = $this->pdo->prepare('INSERT INTO borrowed (id_book, id_user) VALUES (:id_book, :id_user)');
+        return $stmt->execute(['id_book' => $id_book, 'id_user' => $id_user]);
     }
 }
 ?>

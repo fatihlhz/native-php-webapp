@@ -10,5 +10,7 @@ class UserController extends Controller {
         }
         require 'views/user.php';
     }
+
+
 }
 ?>

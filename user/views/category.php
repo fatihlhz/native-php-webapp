@@ -1,12 +1,12 @@
 <?php
 // Assuming you have already established a database connection here
 // Example categories data (you would fetch this from your database)
-$categories = [
-    ['id' => 1, 'name' => 'Fiction', 'description' => 'Books that contain fictional stories.'],
-    ['id' => 2, 'name' => 'Non-Fiction', 'description' => 'Books that are based on real facts and information.'],
-    ['id' => 3, 'name' => 'Science Fiction', 'description' => 'Books that deal with imaginative and futuristic concepts.'],
-    ['id' => 4, 'name' => 'Biography', 'description' => 'Books that tell the life stories of people.'],
-];
+// $categories = [
+//     ['id' => 1, 'name' => 'Fiction', 'description' => 'Books that contain fictional stories.'],
+//     ['id' => 2, 'name' => 'Non-Fiction', 'description' => 'Books that are based on real facts and information.'],
+//     ['id' => 3, 'name' => 'Science Fiction', 'description' => 'Books that deal with imaginative and futuristic concepts.'],
+//     ['id' => 4, 'name' => 'Biography', 'description' => 'Books that tell the life stories of people.'],
+// ];
 ?>
 
 <!DOCTYPE html>

@@ -48,12 +48,12 @@
 
     <?php
     // Data array untuk tabel
-    $data_peminjaman = [
-        ['id' => 1, 'nama' => 'John Doe', 'buku' => 'Book 1', 'tanggal_pinjam' => '2024-06-22', 'tanggal_kembali' => '2024-06-29', 'status' => 'Dipinjam'],
-        ['id' => 2, 'nama' => 'Jane Smith', 'buku' => 'Book 3', 'tanggal_pinjam' => '2024-06-23', 'tanggal_kembali' => '2024-06-30', 'status' => 'Diproses'],
-        ['id' => 3, 'nama' => 'Mary Johnson', 'buku' => 'Book 2', 'tanggal_pinjam' => '2024-06-24', 'tanggal_kembali' => '2024-07-01', 'status' => 'Diproses'],
-        ['id' => 3, 'nama' => 'Ahmed Chiuk', 'buku' => 'Book 4', 'tanggal_pinjam' => '2024-06-24', 'tanggal_kembali' => '2024-07-01', 'status' => 'Dipinjam'],
-    ];
+    // $data_peminjaman = [
+    //     ['id' => 1, 'nama' => 'John Doe', 'buku' => 'Book 1', 'tanggal_pinjam' => '2024-06-22', 'tanggal_kembali' => '2024-06-29', 'status' => 'Dipinjam'],
+    //     ['id' => 2, 'nama' => 'Jane Smith', 'buku' => 'Book 3', 'tanggal_pinjam' => '2024-06-23', 'tanggal_kembali' => '2024-06-30', 'status' => 'Diproses'],
+    //     ['id' => 3, 'nama' => 'Mary Johnson', 'buku' => 'Book 2', 'tanggal_pinjam' => '2024-06-24', 'tanggal_kembali' => '2024-07-01', 'status' => 'Diproses'],
+    //     ['id' => 3, 'nama' => 'Ahmed Chiuk', 'buku' => 'Book 4', 'tanggal_pinjam' => '2024-06-24', 'tanggal_kembali' => '2024-07-01', 'status' => 'Dipinjam'],
+    // ];
 
     // Fungsi untuk menentukan warna badge berdasarkan status
     function getStatusBadge($status) {
@@ -73,23 +73,25 @@
     <table class="table table-striped my-3">
         <thead>
             <tr>
-                <th scope="col">#</th>
+                <th scope="col">No</th>
                 <th scope="col">Nama Peminjam</th>
                 <th scope="col">Buku Dipinjam</th>
-                <th scope="col">Tanggal Pinjam</th>
-                <th scope="col">Tanggal Pengembalian</th>
+                <!-- <th scope="col">Tanggal Pinjam</th>
+                <th scope="col">Tanggal Pengembalian</th> -->
                 <th scope="col">Status</th>
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($data_peminjaman as $data): ?>
+            <?php
+            $index = 1;
+             foreach ($data_peminjaman as $data): ?>
                 <tr>
-                    <th scope="row"><?php echo $data['id']; ?></th>
-                    <td><?php echo $data['nama']; ?></td>
-                    <td><?php echo $data['buku']; ?></td>
-                    <td><?php echo $data['tanggal_pinjam']; ?></td>
-                    <td><?php echo $data['tanggal_kembali']; ?></td>
-                    <td><?php echo getStatusBadge($data['status']); ?></td>
+                    <th scope="row"><?php echo $index++; ?></th>
+                    <td><?php echo $data['title']; ?></td>
+                    <td><?php echo $data['category']; ?></td>
+                    <!-- <td><?php echo $data['tanggal_pinjam']; ?></td>
+                    <td><?php echo $data['tanggal_kembali']; ?></td> -->
+                    <td><?php echo getStatusBadge('Dipinjam'); ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
